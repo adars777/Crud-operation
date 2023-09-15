@@ -1,0 +1,60 @@
+﻿@model IEnumerable<CRUD_OPERATION.Models.UserInfo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>List of Users</h1>
+
+<p>
+    <input class="btn btn-primary" type="button" value="Create New" onclick="location.href='@Url.Action("Create", "UserInfo")'" />
+</p>
+<table class="table table-bordered table-hover">
+    <thead class="table table-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.firstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.lastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dateOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MobileNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>&emsp; &emsp; &emsp; &emsp;  Options</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.firstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MobileNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                    <input class="btn btn-primary" type="button" value="Edit" onclick="location.href='@Url.Action("Edit", "UserInfo" , new {id=@item.Id})'" />
+                    <input class="btn btn-info" type="button" value="Details" onclick="location.href='@Url.Action("Details", "UserInfo" , new {id=@item.Id})'" />
+                    <input class="btn btn-danger" type="button" value="Delete" onclick="location.href='@Url.Action("Delete", "UserInfo" , new {id=@item.Id})'" />
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+    
